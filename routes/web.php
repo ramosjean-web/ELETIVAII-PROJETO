@@ -11,3 +11,4 @@ Route::get('/', function () {
 Route::resource('produto', ProdutosController::class);
 
 Route::resource('categoria', CategoriaController::class);
+//oi
