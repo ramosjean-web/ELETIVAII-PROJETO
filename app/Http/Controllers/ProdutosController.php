@@ -8,74 +8,107 @@ use Illuminate\Http\Request;
 class ProdutosController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Lista todos os produtos.
      */
     public function index()
     {
-        $produtos = Produtos:: all();
+        $produtos = Produtos::all();
+
         return view('produtos.index', compact('produtos'));
-
-
     }
 
+
     /**
-     * Show the form for creating a new resource.
+     * Exibe o formulário de cadastro.
      */
     public function create()
     {
         return view('produtos.create');
     }
 
+
     /**
-     * Store a newly created resource in storage.
+     * Salva um novo produto.
      */
     public function store(Request $request)
     {
-        if (Produtos::create($request->all()))
-        return redirect()->route('/produtos.index')->with ('mensagem', 'Produto adicionado com sucesso!');
-        else redirect()->route('/produtos.index')->with('mensagem', ' ERRO ao inserir o produto');
+        if (Produtos::create($request->all())) {
+
+            return redirect()
+                ->route('produto.index')
+                ->with('mensagem', 'Produto adicionado com sucesso!');
+
+        } else {
+
+            return redirect()
+                ->route('produto.index')
+                ->with('mensagem', 'Erro ao inserir o produto!');
+        }
     }
 
 
     /**
-     * Display the specified resource.
+     * Consulta um produto.
      */
     public function show(string $id)
     {
-        $produtos = Produtos::findoRFail($id);
+        $produtos = Produtos::findOrFail($id);
+
         return view('produtos.show', compact('produtos'));
     }
 
+
     /**
-     * Show the form for editing the specified resource.
+     * Exibe o formulário de edição.
      */
     public function edit(string $id)
     {
-         $produtos = Produtos::findoRFail($id);
+        $produtos = Produtos::findOrFail($id);
+
         return view('produtos.edit', compact('produtos'));
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * Atualiza o produto.
      */
     public function update(Request $request, string $id)
     {
-        $produtos = Produtos::findOrfail($id);
-        if($produtos->update($request->all()))
-            return redirect()->route('/produtos.index')->with('mensagem', 'Produto Alterados com sucesso!');
-        else
-            return redirect()->route('/produtos.index')->with('mensagem', 'Erro Alterados com sucesso!');
+        $produtos = Produtos::findOrFail($id);
+
+        if ($produtos->update($request->all())) {
+
+            return redirect()
+                ->route('produto.index')
+                ->with('mensagem', 'Produto alterado com sucesso!');
+
+        } else {
+
+            return redirect()
+                ->route('produto.index')
+                ->with('mensagem', 'Erro ao alterar o produto!');
+        }
     }
 
+
     /**
-     * Remove the specified resource from storage.
+     * Exclui o produto.
      */
     public function destroy(string $id)
     {
-        $produtos = Produtos::findOrfail($id);
-        if($produtos->delete())
-            return redirect()->route('/produtos.index')->with('mensagem', 'Produto Excluido com sucesso!');
-        else
-             return redirect()->route('/produtos.index')->with('mensagem', 'Erro ao Excluir Produto!');
+        $produtos = Produtos::findOrFail($id);
+
+        if ($produtos->delete()) {
+
+            return redirect()
+                ->route('produto.index')
+                ->with('mensagem', 'Produto excluído com sucesso!');
+
+        } else {
+
+            return redirect()
+                ->route('produto.index')
+                ->with('mensagem', 'Erro ao excluir o produto!');
+        }
     }
 }

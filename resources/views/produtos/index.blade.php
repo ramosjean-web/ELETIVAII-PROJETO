@@ -29,8 +29,8 @@
                   <td>{{ $c ->descricao}}</td>
                   <td>{{ $c ->preco_base}}</td>
                   <td class="d-flex gap-2">
-                    <a href="/produto/{{$c-> id}} /edit" class="btn btn-sm btn-warning">Editar</a>
-                    <a href=" /produto/{{$c-> id}}  class="btn btn-sm btn-info">Consultar</a>
+                    <a href="/produto/{{$c->id}}/edit" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="/produto/{{$c->id}}"  class="btn btn-sm btn-info">Consultar</a>
                   </td>
                 </tr>
                 @endforeach            
