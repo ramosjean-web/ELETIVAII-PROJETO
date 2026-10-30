@@ -27,19 +27,20 @@
                     🏠 Início
                 </a>
 
-                <a href="#">
+                <a href="{{ route('pedidos.create') }}">
                     🛒 Novo Pedido
                 </a>
 
-                <a href="#">
+                <a href="{{ route('pedidos.index') }}">
                     📋 Pedidos
                 </a>
 
-                <a href="#">
+                <a href="{{ route('clientes.index') }}">
+
                     👤 Clientes
                 </a>
 
-                <a href="#">
+                <a href="{{ route('produto.index') }}">
                     🍔 Produtos
                 </a>
             </nav>
