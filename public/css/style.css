@@ -498,3 +498,16 @@ footer a {
         padding: 45px 22px;
     }
 }
+/* ========================================
+   DASHBOARD DO ATENDENTE
+======================================== */
+
+.dashboard {
+    display: flex;
+    min-height: 100vh;
+    background: #f8f4ee;
+}
+
+.menu-lateral {
+    width: 250px;
+    min-height: 100vh;
